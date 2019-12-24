@@ -9,16 +9,10 @@ import com.rightline.dao.ModelDAO;
 import com.rightline.entity.LegoSet;
 import com.rightline.entity.Manual;
 import com.rightline.entity.Model;
-import org.hibernate.result.Output;
 import org.junit.After;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureJdbc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
-import org.springframework.test.context.junit4.SpringRunner;
 
 
 @SpringJUnitConfig(ApplicationRunner.class)
