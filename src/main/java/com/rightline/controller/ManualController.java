@@ -57,5 +57,9 @@ public class ManualController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/find-all-manuals-by-legosetid/{cartId}")
+    ResponseEntity<Manual> findAllManualsByLegoSetId(@PathVariable Integer legoSetId){
+        return new ResponseEntity(manualService.findAllManualsByLegoSetId(legoSetId), HttpStatus.OK);
+    }
 
 }

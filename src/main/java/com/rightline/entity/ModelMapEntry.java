@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "modelmapentry")
+@Table(name = "modelsmapentry")
 public class ModelMapEntry {
 
     @Id

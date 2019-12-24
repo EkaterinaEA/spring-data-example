@@ -54,4 +54,13 @@ public class ModelServiceImpl implements ModelService {
     public void deleteById(Integer id) {
         modelDAO.deleteById(id);
     }
+
+    @Override
+    public List<Model> findAllModelsByLegoSetId(Integer legoSetId) {
+        List<Model> models = modelDAO.findAllModelsByLegoSetId(legoSetId);
+        if (!models.isEmpty()){
+            return models;
+        }
+        return null;
+    }
 }

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "manual")
+@Table(name = "manuals")
 public class Manual {
 
     @Id
@@ -26,13 +26,13 @@ public class Manual {
     @Column(name = "text")
     private String text;
 
-    @Column(name = "logoset")
-    private String logoset;
+    @ManyToOne(targetEntity = LegoSet.class)
+    private LegoSet legoSet;
 
-    public Manual(String author, String text, String logoset) {
+    public Manual(String author, String text, LegoSet legoset) {
         this.author = author;
         this.text = text;
-        this.logoset = logoset;
+        this.legoSet = legoset;
     }
 
 }

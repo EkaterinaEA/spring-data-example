@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "model")
+@Table(name = "models")
 public class Model {
 
     @Id
@@ -30,10 +30,27 @@ public class Model {
     @ManyToOne(targetEntity = ModelMapEntry.class)
     private ModelMapEntry modelMapEntry;
 
-    public Model(String name, String description, ModelMapEntry modelMapEntry) {
+    @ManyToOne(targetEntity = LegoSet.class)
+    private LegoSet legoSet;
+
+    public Model(String name, String description, ModelMapEntry modelMapEntry, LegoSet legoSet) {
         this.name = name;
         this.description = description;
         this.modelMapEntry = modelMapEntry;
+        this.legoSet = legoSet;
+    }
+
+    public Model(String name, String description, LegoSet legoSet) {
+        this.name = name;
+        this.description = description;
+        this.legoSet = legoSet;
+    }
+
+    public Model(Integer id, String name, String description, LegoSet legoSet) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.legoSet = legoSet;
     }
 
 }

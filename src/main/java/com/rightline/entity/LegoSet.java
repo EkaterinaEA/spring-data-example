@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "legoset")
+@Table(name = "legosets")
 public class LegoSet {
 
     @Id

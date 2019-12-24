@@ -51,6 +51,15 @@ public class ManualServiceImpl  implements ManualService {
     }
 
     @Override
+    public List<Manual> findAllManualsByLegoSetId(Integer legoSetId) {
+        List<Manual> manuals = manualDAO.findAllManualsByLegoSetId(legoSetId);
+        if (!manuals.isEmpty()){
+            return manuals;
+        }
+        return null;
+    }
+
+    @Override
     public void delete(Manual manual) {
         manualDAO.delete(manual);
     }

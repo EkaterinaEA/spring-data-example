@@ -18,4 +18,6 @@ public interface ManualService {
 
     void deleteById(Integer id);
 
+    List<Manual> findAllManualsByLegoSetId (Integer legoSetId);
+
 }
