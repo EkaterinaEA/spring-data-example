@@ -14,6 +14,7 @@ import java.util.List;
 @RequestMapping("/manual")
 public class ManualController {
 
+
     @Autowired
     private ManualService manualService;
 
