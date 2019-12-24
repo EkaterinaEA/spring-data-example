@@ -1,4 +1,4 @@
-package com.krasnova.entity;
+package com.rightline.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

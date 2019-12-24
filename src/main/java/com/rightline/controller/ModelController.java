@@ -1,8 +1,8 @@
-package com.krasnova.controller;
+package com.rightline.controller;
 
 
-import com.krasnova.entity.Model;
-import com.krasnova.service.ModelService;
+import com.rightline.entity.Model;
+import com.rightline.service.ModelService;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

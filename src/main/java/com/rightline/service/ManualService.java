@@ -1,6 +1,6 @@
-package com.krasnova.service;
+package com.rightline.service;
 
-import com.krasnova.entity.Manual;
+import com.rightline.entity.Manual;
 
 import java.util.List;
 

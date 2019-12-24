@@ -1,7 +1,7 @@
-package com.krasnova.controller;
+package com.rightline.controller;
 
-import com.krasnova.entity.LegoSet;
-import com.krasnova.service.LegoSetService;
+import com.rightline.entity.LegoSet;
+import com.rightline.service.LegoSetService;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

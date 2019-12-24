@@ -1,4 +1,4 @@
-package com.krasnova.entity;
+package com.rightline.entity;
 
 public enum AgeGroup {
 

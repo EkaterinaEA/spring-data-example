@@ -1,8 +1,8 @@
-package com.krasnova.service.Impl;
+package com.rightline.service.Impl;
 
-import com.krasnova.dao.ModelDAO;
-import com.krasnova.entity.Model;
-import com.krasnova.service.ModelService;
+import com.rightline.dao.ModelDAO;
+import com.rightline.entity.Model;
+import com.rightline.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

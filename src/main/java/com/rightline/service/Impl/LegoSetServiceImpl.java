@@ -1,9 +1,9 @@
-package com.krasnova.service.Impl;
+package com.rightline.service.Impl;
 
 
-import com.krasnova.dao.LegoSetRepository;
-import com.krasnova.entity.LegoSet;
-import com.krasnova.service.LegoSetService;
+import com.rightline.dao.LegoSetRepository;
+import com.rightline.entity.LegoSet;
+import com.rightline.service.LegoSetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

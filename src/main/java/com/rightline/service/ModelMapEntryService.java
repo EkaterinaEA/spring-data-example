@@ -1,6 +1,6 @@
-package com.krasnova.service;
+package com.rightline.service;
 
-import com.krasnova.entity.ModelMapEntry;
+import com.rightline.entity.ModelMapEntry;
 
 import java.util.List;
 

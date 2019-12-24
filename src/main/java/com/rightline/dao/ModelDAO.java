@@ -1,6 +1,6 @@
-package com.krasnova.dao;
+package com.rightline.dao;
 
-import com.krasnova.entity.Model;
+import com.rightline.entity.Model;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ModelDAO extends JpaRepository<Model, Integer> {

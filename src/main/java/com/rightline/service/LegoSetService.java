@@ -1,6 +1,6 @@
-package com.krasnova.service;
+package com.rightline.service;
 
-import com.krasnova.entity.LegoSet;
+import com.rightline.entity.LegoSet;
 
 import java.util.List;
 

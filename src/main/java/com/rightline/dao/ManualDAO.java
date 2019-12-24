@@ -1,6 +1,6 @@
-package com.krasnova.dao;
+package com.rightline.dao;
 
-import com.krasnova.entity.Manual;
+import com.rightline.entity.Manual;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 

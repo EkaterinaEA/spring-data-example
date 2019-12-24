@@ -1,8 +1,8 @@
-package com.krasnova.controller;
+package com.rightline.controller;
 
 
-import com.krasnova.entity.ModelMapEntry;
-import com.krasnova.service.ModelMapEntryService;
+import com.rightline.entity.ModelMapEntry;
+import com.rightline.service.ModelMapEntryService;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
