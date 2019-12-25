@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ModelDAO extends JpaRepository<Model, Integer> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM models WHERE lego_set_id = :legoSetId")
-    List<Model> findAllModelsByLegoSetId (Integer legoSetId);
+    @Query(nativeQuery = true, value = "SELECT * FROM models WHERE lego_set_id = :legosetid")
+    List<Model> findAllModelsByLegoSetId (Integer legosetid);
 
 }

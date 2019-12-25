@@ -50,9 +50,9 @@ class ModelDAOTest {
 
     @AfterEach
     void tearDown(){
+        models.stream().forEach(model -> modelDAO.delete(model));
         modelMaps.stream().forEach(modelMapEntry -> modelMapEntryDAO.delete(modelMapEntry));
         legoSets.stream().forEach(legoSet -> legoSetRepository.delete(legoSet));
-        models.stream().forEach(model -> modelDAO.delete(model));
     }
 
     @Test

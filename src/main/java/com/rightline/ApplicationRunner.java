@@ -12,10 +12,6 @@ public class ApplicationRunner {
 
         SpringApplication.run(ApplicationRunner.class, args);
 
-        // Run with profiles
-    //    SpringApplication context = new SpringApplication(ApplicationRunner.class);
-    //    context.setAdditionalProfiles("jsp");
-    //    context.run(args);
 
     }
 

@@ -52,7 +52,8 @@ class ManualDAOTest {
 
     @AfterEach
     void tearDown(){
-        legoList.stream().forEach(legoSet -> legoSetRepository.delete(legoSet));
         manuals.stream().forEach(manual -> manualDAO.delete(manual));
+        legoList.stream().forEach(legoSet -> legoSetRepository.delete(legoSet));
     }
+
 }

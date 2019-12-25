@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ManualDAO extends CrudRepository<Manual, Integer>, JpaRepository<Manual, Integer> {
 
-    @Query(nativeQuery = true, value = "SELECT * FROM manuals WHERE lego_set_id = :legoSetId")
-    List<Manual> findAllManualsByLegoSetId (Integer legoSetId);
+    @Query(nativeQuery = true, value = "SELECT * FROM manuals WHERE lego_set_id = :legosetid")
+    List<Manual> findAllManualsByLegoSetId (Integer legosetid);
 
 }
