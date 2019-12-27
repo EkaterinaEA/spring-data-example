@@ -28,7 +28,7 @@ public class Customer {
     @Column(name = "lastname")
     private String lastname;
 
-    @ManyToMany(targetEntity = Address.class)
+    @ManyToOne(targetEntity = Address.class)
     private Address address;
 
     /**
