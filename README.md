@@ -1,4 +1,6 @@
-# work with open source project spring-data-example, jdbc
+# work with open source project spring-data-example: 
+# jdbc
+# multi-store
 
 #### Original project: https://github.com/spring-projects/spring-data-examples
 
