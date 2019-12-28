@@ -10,8 +10,6 @@ import com.rightline.ApplicationRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 
 @SpringJUnitConfig(ApplicationRunner.class)
 class LegoSetRepositoryTest {
