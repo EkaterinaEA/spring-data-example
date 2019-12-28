@@ -32,13 +32,13 @@ class ManualServiceTest {
     @Autowired
     ManualService manualService;
 
-    LegoSet legoSet = new LegoSet(1,"LegoSet");
+    LegoSet legoSet = new LegoSet(1, "LegoSet");
 
     @Test
     void save() {
 
         Manual manual = new Manual("Author", "text", legoSet);
-        Manual storedManual = new Manual(1,"Author", "text", legoSet);
+        Manual storedManual = new Manual(1, "Author", "text", legoSet);
 
         when(manualDAO.save(any(Manual.class))).thenReturn(storedManual);
 
@@ -52,8 +52,8 @@ class ManualServiceTest {
     @Test
     void update() {
 
-        Manual manual = new Manual(1,"Author", "text", legoSet);
-        Manual updatedManual = new Manual(1,"Updated_Author", "updated_text", legoSet);
+        Manual manual = new Manual(1, "Author", "text", legoSet);
+        Manual updatedManual = new Manual(1, "Updated_Author", "updated_text", legoSet);
 
         when(manualDAO.findById(anyInt())).thenReturn(Optional.of(manual));
         when(manualDAO.save(any(Manual.class))).thenReturn(updatedManual);
@@ -69,7 +69,7 @@ class ManualServiceTest {
     @Test
     void findById() {
 
-        Manual manual = new Manual(1,"Author", "text", legoSet);
+        Manual manual = new Manual(1, "Author", "text", legoSet);
 
         when(manualDAO.findById(anyInt())).thenReturn(Optional.of(manual));
 
@@ -84,8 +84,8 @@ class ManualServiceTest {
     @Test
     void findAll() {
 
-        Manual manual1 = new Manual(1,"Author1", "text1", legoSet);
-        Manual manual2 = new Manual(2,"Author2", "text2", legoSet);
+        Manual manual1 = new Manual(1, "Author1", "text1", legoSet);
+        Manual manual2 = new Manual(2, "Author2", "text2", legoSet);
 
         when(manualDAO.findAll()).thenReturn(Arrays.asList(manual1, manual2));
 
@@ -110,7 +110,7 @@ class ManualServiceTest {
     @Test
     void deleteById() {
 
-        Manual manual = new Manual(1,"Author", "text", legoSet);
+        Manual manual = new Manual(1, "Author", "text", legoSet);
         doNothing().when(manualDAO).deleteById(anyInt());
         manualService.deleteById(manual.getId());
         verify(manualDAO, times(1)).deleteById(anyInt());

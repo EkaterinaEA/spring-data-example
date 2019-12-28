@@ -34,7 +34,7 @@ class LegoSetServiceTest {
     void save() {
 
         LegoSet legoSet = new LegoSet("LegoSet1");
-        LegoSet storedLegoSet = new LegoSet(1,"LegoSet1");
+        LegoSet storedLegoSet = new LegoSet(1, "LegoSet1");
 
         when(legoSetRepository.save(any(LegoSet.class))).thenReturn(storedLegoSet);
 
@@ -80,8 +80,8 @@ class LegoSetServiceTest {
     @Test
     void findAll() {
 
-        LegoSet legoSet1 = new LegoSet(1,"LegoSet1");
-        LegoSet legoSet2 = new LegoSet( 2,"LegoSet2");
+        LegoSet legoSet1 = new LegoSet(1, "LegoSet1");
+        LegoSet legoSet2 = new LegoSet(2, "LegoSet2");
 
         when(legoSetRepository.findAll()).thenReturn(Arrays.asList(legoSet1, legoSet2));
 

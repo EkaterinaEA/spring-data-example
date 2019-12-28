@@ -34,9 +34,9 @@ public class LegoSetServiceImpl  implements LegoSetService {
 
     @Override
     public LegoSet findById(Integer id) {
-        Optional<LegoSet> LegoSetWrapper = legoSetRepository.findById(id);
-        if (LegoSetWrapper.isPresent()) {
-            return LegoSetWrapper.get();
+        Optional<LegoSet> legoSetWrapper = legoSetRepository.findById(id);
+        if (legoSetWrapper.isPresent()) {
+            return legoSetWrapper.get();
         }
         return null;
     }

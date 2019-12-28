@@ -32,7 +32,7 @@ class ModelServiceTest {
     @Autowired
     ModelService modelService;
 
-    LegoSet legoSet = new LegoSet(1,"LegoSet");
+    LegoSet legoSet = new LegoSet(1, "LegoSet");
     ModelMapEntry modelMapEntry = new ModelMapEntry(1, "key");
 
     @Test

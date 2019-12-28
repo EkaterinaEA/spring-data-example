@@ -18,6 +18,6 @@ public interface ModelService {
 
     void deleteById(Integer id);
 
-    List<Model> findAllModelsByLegoSetId (Integer legoSetId);
+    List<Model> findAllModelsByLegoSetId(Integer legoSetId);
 
 }

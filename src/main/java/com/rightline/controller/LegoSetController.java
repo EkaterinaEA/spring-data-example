@@ -45,7 +45,7 @@ public class LegoSetController {
     @ApiParam("test id description")
     @GetMapping({"/{id}", ""})
     ResponseEntity findById(@PathVariable (required = false) Integer id) {
-        if (id == null){
+        if (id == null) {
             return new ResponseEntity<List>(legoSetService.findAll(), HttpStatus.OK);
         } else {
             return new ResponseEntity<LegoSet>(legoSetService.findById(id), HttpStatus.OK);
@@ -53,13 +53,13 @@ public class LegoSetController {
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<LegoSet> deleteById (@PathVariable Integer id){
+    ResponseEntity<LegoSet> deleteById(@PathVariable Integer id) {
         legoSetService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<LegoSet> delete (@RequestBody LegoSet legoSet){
+    ResponseEntity<LegoSet> delete(@RequestBody LegoSet legoSet) {
         legoSetService.delete(legoSet);
         return new ResponseEntity<>(HttpStatus.OK);
     }

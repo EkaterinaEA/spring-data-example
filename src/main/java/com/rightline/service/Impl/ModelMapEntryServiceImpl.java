@@ -33,9 +33,9 @@ public class ModelMapEntryServiceImpl implements ModelMapEntryService {
 
     @Override
     public ModelMapEntry findById(Integer id) {
-        Optional<ModelMapEntry> ModelMapEntryWrapper = modelMapEntryDAO.findById(id);
-        if (ModelMapEntryWrapper.isPresent()) {
-            return ModelMapEntryWrapper.get();
+        Optional<ModelMapEntry> modelMapEntryWrapper = modelMapEntryDAO.findById(id);
+        if (modelMapEntryWrapper.isPresent()) {
+            return modelMapEntryWrapper.get();
         }
         return null;
     }

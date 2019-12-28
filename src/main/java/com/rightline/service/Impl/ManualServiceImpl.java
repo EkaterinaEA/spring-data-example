@@ -33,9 +33,9 @@ public class ManualServiceImpl  implements ManualService {
 
     @Override
     public Manual findById(Integer id) {
-        Optional<Manual> ManualWrapper = manualDAO.findById(id);
-        if (ManualWrapper.isPresent()) {
-            return ManualWrapper.get();
+        Optional<Manual> manualWrapper = manualDAO.findById(id);
+        if (manualWrapper.isPresent()) {
+            return manualWrapper.get();
         }
         return null;
     }
@@ -53,7 +53,7 @@ public class ManualServiceImpl  implements ManualService {
     @Override
     public List<Manual> findAllManualsByLegoSetId(Integer legoSetId) {
         List<Manual> manuals = manualDAO.findAllManualsByLegoSetId(legoSetId);
-        if (!manuals.isEmpty()){
+        if (!manuals.isEmpty()) {
             return manuals;
         }
         return null;

@@ -29,7 +29,7 @@ class ManualDAOTest {
     List<Manual> manuals = new ArrayList<>();
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
 
         LegoSet legoSet = new LegoSet("LegoSet");
         LegoSet savedLegoSet = legoSetRepository.saveAndFlush(legoSet);
@@ -53,7 +53,7 @@ class ManualDAOTest {
     }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         manuals.stream().forEach(manual -> manualDAO.delete(manual));
         legoList.stream().forEach(legoSet -> legoSetRepository.delete(legoSet));
     }

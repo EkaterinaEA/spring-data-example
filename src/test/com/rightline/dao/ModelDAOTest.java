@@ -34,7 +34,7 @@ class ModelDAOTest {
     List<LegoSet> legoSets = new ArrayList<>();
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
 
         ModelMapEntry modelMapEntry = new ModelMapEntry(1, "key");
         ModelMapEntry savedModelMapEntry = modelMapEntryDAO.saveAndFlush(modelMapEntry);
@@ -51,7 +51,7 @@ class ModelDAOTest {
     }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         models.stream().forEach(model -> modelDAO.delete(model));
         modelMaps.stream().forEach(modelMapEntry -> modelMapEntryDAO.delete(modelMapEntry));
         legoSets.stream().forEach(legoSet -> legoSetRepository.delete(legoSet));

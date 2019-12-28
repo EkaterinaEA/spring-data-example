@@ -20,15 +20,14 @@ class LegoSetRepositoryTest {
     List<LegoSet> legoSets = new ArrayList<>();
 
     @BeforeEach
-    void setUp(){
-
+    void setUp() {
         LegoSet legoSet = new LegoSet("LegoSet1");
         LegoSet savedLegoSet = legoSetRepository.saveAndFlush(legoSet);
         legoSets.add(savedLegoSet);
     }
 
     @AfterEach
-    void tearDown(){
+    void tearDown() {
         legoSets.stream().forEach(legoSet -> legoSetRepository.delete(legoSet));
     }
 

@@ -66,7 +66,7 @@ public class ModelController {
     }
 
     @GetMapping("/find-all-models-by-legosetid/{cartId}")
-    ResponseEntity<Model> findAllModelsByLegoSetId(@PathVariable Integer legoSetId){
+    ResponseEntity<Model> findAllModelsByLegoSetId(@PathVariable Integer legoSetId) {
         return new ResponseEntity(modelService.findAllModelsByLegoSetId(legoSetId), HttpStatus.OK);
     }
 }

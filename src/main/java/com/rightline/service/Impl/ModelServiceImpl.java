@@ -33,9 +33,9 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public Model findById(Integer id) {
-        Optional<Model> ModelWrapper = modelDAO.findById(id);
-        if (ModelWrapper.isPresent()) {
-            return ModelWrapper.get();
+        Optional<Model> modelWrapper = modelDAO.findById(id);
+        if (modelWrapper.isPresent()) {
+            return modelWrapper.get();
         }
         return null;
     }
@@ -58,7 +58,7 @@ public class ModelServiceImpl implements ModelService {
     @Override
     public List<Model> findAllModelsByLegoSetId(Integer legoSetId) {
         List<Model> models = modelDAO.findAllModelsByLegoSetId(legoSetId);
-        if (!models.isEmpty()){
+        if (!models.isEmpty()) {
             return models;
         }
         return null;

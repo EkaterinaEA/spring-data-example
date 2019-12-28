@@ -45,7 +45,7 @@ public class ManualController {
     @ApiParam("test id description")
     @GetMapping({"/{id}", ""})
     ResponseEntity findById(@PathVariable (required = false) Integer id) {
-        if (id == null){
+        if (id == null) {
             return new ResponseEntity<List>(manualService.findAll(), HttpStatus.OK);
         } else {
             return new ResponseEntity<Manual>(manualService.findById(id), HttpStatus.OK);
@@ -53,19 +53,19 @@ public class ManualController {
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<Manual> deleteById (@PathVariable Integer id){
+    ResponseEntity<Manual> deleteById(@PathVariable Integer id) {
         manualService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<Manual> delete (@RequestBody Manual manual){
+    ResponseEntity<Manual> delete(@RequestBody Manual manual) {
         manualService.delete(manual);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/find-all-manuals-by-legosetid/{cartId}")
-    public ResponseEntity<Manual> findAllManualsByLegoSetId(@PathVariable Integer legoSetId){
+    public ResponseEntity<Manual> findAllManualsByLegoSetId(@PathVariable Integer legoSetId) {
         return new ResponseEntity(manualService.findAllManualsByLegoSetId(legoSetId), HttpStatus.OK);
     }
 
