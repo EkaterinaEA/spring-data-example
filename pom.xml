@@ -56,11 +56,12 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- SPRING-SECURITY-->
+        <!-- SPRING-SECURITY
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        -->
 
 
         <!-- JDBC Driver -->
