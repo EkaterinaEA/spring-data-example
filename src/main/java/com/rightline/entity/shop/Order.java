@@ -39,13 +39,13 @@ public class Order {
     @ManyToOne(targetEntity = LineItem.class)
     private LineItem item;
 
-    public Order(String customerId, Date orderDate, LineItem item){
+    public Order(String customerId, Date orderDate, LineItem item) {
         this.customerId = customerId;
         this.orderDate = orderDate;
         this.item = item;
     }
 
-    public Order(LineItem item){
+    public Order(LineItem item) {
         this.item = item;
     }
 

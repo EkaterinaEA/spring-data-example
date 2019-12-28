@@ -36,7 +36,7 @@ public class LineItem {
     @Column(name = "quantity")
     private int quantity;
 
-    public LineItem(String caption, double price, int quantity){
+    public LineItem(String caption, double price, int quantity) {
         this.caption = caption;
         this.price = price;
         this.quantity = quantity;

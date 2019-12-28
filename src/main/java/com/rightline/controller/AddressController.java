@@ -45,7 +45,7 @@ public class AddressController {
     @ApiParam("test id description")
     @GetMapping({"/{id}", ""})
     ResponseEntity findById(@PathVariable (required = false) Integer id) {
-        if (id == null){
+        if (id == null) {
             return new ResponseEntity<List>(addressService.findAll(), HttpStatus.OK);
         } else {
             return new ResponseEntity<Address>(addressService.findById(id), HttpStatus.OK);
@@ -53,13 +53,13 @@ public class AddressController {
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<Address> deleteById (@PathVariable Integer id){
+    ResponseEntity<Address> deleteById(@PathVariable Integer id) {
         addressService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<Address> delete (@RequestBody Address address){
+    ResponseEntity<Address> delete(@RequestBody Address address) {
         addressService.delete(address);
         return new ResponseEntity<>(HttpStatus.OK);
     }

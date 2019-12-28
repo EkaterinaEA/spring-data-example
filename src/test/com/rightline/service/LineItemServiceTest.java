@@ -35,7 +35,7 @@ class LineItemServiceTest {
     void save() {
 
         LineItem lineItem = new LineItem("caption", 567.89, 100);
-        LineItem storedLineItem = new LineItem(1,"caption", 567.89, 100);
+        LineItem storedLineItem = new LineItem(1, "caption", 567.89, 100);
 
         when(lineItemRepository.save(any(LineItem.class))).thenReturn(storedLineItem);
 
@@ -49,8 +49,8 @@ class LineItemServiceTest {
     @Test
     void update() {
 
-        LineItem lineItem = new LineItem(1,"caption", 567.89, 100);
-        LineItem updatedLineItem = new LineItem(1,"updated_caption", 100.00, 555);
+        LineItem lineItem = new LineItem(1, "caption", 567.89, 100);
+        LineItem updatedLineItem = new LineItem(1, "updated_caption", 100.00, 555);
 
         when(lineItemRepository.findById(anyInt())).thenReturn(Optional.of(lineItem));
         when(lineItemRepository.save(any(LineItem.class))).thenReturn(updatedLineItem);
@@ -66,7 +66,7 @@ class LineItemServiceTest {
     @Test
     void findById() {
 
-        LineItem lineItem = new LineItem(1,"caption", 567.89, 100);
+        LineItem lineItem = new LineItem(1, "caption", 567.89, 100);
 
         when(lineItemRepository.findById(anyInt())).thenReturn(Optional.of(lineItem));
 
@@ -81,8 +81,8 @@ class LineItemServiceTest {
     @Test
     void findAll() {
 
-        LineItem lineItem1 = new LineItem(1,"caption", 567.89, 100);
-        LineItem lineItem2 = new LineItem(2,"updated_caption", 100.00, 555);
+        LineItem lineItem1 = new LineItem(1, "caption", 567.89, 100);
+        LineItem lineItem2 = new LineItem(2, "updated_caption", 100.00, 555);
 
         when(lineItemRepository.findAll()).thenReturn(Arrays.asList(lineItem1, lineItem2));
 
@@ -107,7 +107,7 @@ class LineItemServiceTest {
     @Test
     void deleteById() {
 
-        LineItem lineItem = new LineItem(1,"caption", 567.89, 100);
+        LineItem lineItem = new LineItem(1, "caption", 567.89, 100);
         doNothing().when(lineItemRepository).deleteById(anyInt());
         lineItemService.deleteById(lineItem.getId());
         verify(lineItemRepository, times(1)).deleteById(anyInt());

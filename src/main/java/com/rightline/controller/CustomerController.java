@@ -45,7 +45,7 @@ public class CustomerController {
     @ApiParam("test id description")
     @GetMapping({"/{id}", ""})
     ResponseEntity findById(@PathVariable (required = false) Integer id) {
-        if (id == null){
+        if (id == null) {
             return new ResponseEntity<List>(customerService.findAll(), HttpStatus.OK);
         } else {
             return new ResponseEntity<Customer>(customerService.findById(id), HttpStatus.OK);
@@ -53,13 +53,13 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<Customer> deleteById (@PathVariable Integer id){
+    ResponseEntity<Customer> deleteById(@PathVariable Integer id) {
         customerService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<Customer> delete (@RequestBody Customer customer){
+    ResponseEntity<Customer> delete(@RequestBody Customer customer) {
         customerService.delete(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }

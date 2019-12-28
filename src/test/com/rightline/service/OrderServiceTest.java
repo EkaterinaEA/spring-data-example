@@ -33,7 +33,7 @@ class OrderServiceTest {
     @Autowired
     OrderService orderService;
 
-    LineItem lineItem = new LineItem(1,"caption", 567.89, 100);
+    LineItem lineItem = new LineItem(1, "caption", 567.89, 100);
 
     @Test
     void save() {

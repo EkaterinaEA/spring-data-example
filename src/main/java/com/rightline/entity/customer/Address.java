@@ -34,7 +34,7 @@ public class Address {
     @Column(name = "zipcode")
     private String zipCode;
 
-    public Address(Point location, String street, String zipCode){
+    public Address(Point location, String street, String zipCode) {
         this.location = location;
         this.street = street;
         this.zipCode = zipCode;
