@@ -13,10 +13,10 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Override
-    public Customer save(Customer customer) {
+    public Customer save(final Customer customer) {
         if (customer.getId() == null) {
             return customerRepository.save(customer);
         }
@@ -24,7 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer update(Customer customer) {
+    public Customer update(final Customer customer) {
         if (customer.getId() != null && findById(customer.getId()) != null) {
             return customerRepository.save(customer);
         }
@@ -32,8 +32,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer findById(Integer id) {
-        Optional<Customer> customerWrapper = customerRepository.findById(id);
+    public Customer findById(final Integer id) {
+        final Optional<Customer> customerWrapper = customerRepository.findById(id);
         if (customerWrapper.isPresent()) {
             return customerWrapper.get();
         }
@@ -46,12 +46,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         customerRepository.deleteById(id);
     }
 
     @Override
-    public void delete(Customer customer) {
+    public void delete(final Customer customer) {
         customerRepository.delete(customer);
     }
 }

@@ -14,10 +14,10 @@ import java.util.Optional;
 public class AddressServiceImpl implements AddressService {
 
     @Autowired
-    AddressRepository addressRepository;
+    private AddressRepository addressRepository;
 
     @Override
-    public Address save(Address address) {
+    public Address save(final Address address) {
         if (address.getId() == null) {
             return addressRepository.save(address);
         }
@@ -25,7 +25,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address update(Address address) {
+    public Address update(final Address address) {
         if (address.getId() != null && findById(address.getId()) != null) {
             return addressRepository.save(address);
         }
@@ -33,8 +33,8 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address findById(Integer id) {
-        Optional<Address> addressWrapper = addressRepository.findById(id);
+    public Address findById(final Integer id) {
+        final Optional<Address> addressWrapper = addressRepository.findById(id);
         if (addressWrapper.isPresent()) {
             return addressWrapper.get();
         }
@@ -47,12 +47,12 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         addressRepository.deleteById(id);
     }
 
     @Override
-    public void delete(Address address) {
+    public void delete(final Address address) {
         addressRepository.delete(address);
     }
 }

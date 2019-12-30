@@ -13,10 +13,10 @@ import java.util.Optional;
 public class LineItemServiceImpl implements LineItemService {
 
     @Autowired
-    LineItemRepository lineItemRepository;
+    private LineItemRepository lineItemRepository;
 
     @Override
-    public LineItem save(LineItem lineItem) {
+    public LineItem save(final LineItem lineItem) {
         if (lineItem.getId() == null) {
             return lineItemRepository.save(lineItem);
         }
@@ -24,7 +24,7 @@ public class LineItemServiceImpl implements LineItemService {
     }
 
     @Override
-    public LineItem update(LineItem lineItem) {
+    public LineItem update(final LineItem lineItem) {
         if (lineItem.getId() != null && findById(lineItem.getId()) != null) {
             return lineItemRepository.save(lineItem);
         }
@@ -32,8 +32,8 @@ public class LineItemServiceImpl implements LineItemService {
     }
 
     @Override
-    public LineItem findById(Integer id) {
-        Optional<LineItem> lineItemWrapper = lineItemRepository.findById(id);
+    public LineItem findById(final Integer id) {
+        final Optional<LineItem> lineItemWrapper = lineItemRepository.findById(id);
         if (lineItemWrapper.isPresent()) {
             return lineItemWrapper.get();
         }
@@ -46,12 +46,12 @@ public class LineItemServiceImpl implements LineItemService {
     }
 
     @Override
-    public void delete(LineItem lineItem) {
+    public void delete(final LineItem lineItem) {
         lineItemRepository.delete(lineItem);
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         lineItemRepository.deleteById(id);
     }
 }

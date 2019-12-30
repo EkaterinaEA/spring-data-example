@@ -13,10 +13,10 @@ import java.util.Optional;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
 
     @Override
-    public Order save(Order order) {
+    public Order save(final Order order) {
         if (order.getId() == null) {
             return orderRepository.save(order);
         }
@@ -24,7 +24,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order update(Order order) {
+    public Order update(final Order order) {
         if (order.getId() != null && findById(order.getId()) != null) {
             return orderRepository.save(order);
         }
@@ -32,8 +32,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order findById(Integer id) {
-        Optional<Order> orderWrapper = orderRepository.findById(id);
+    public Order findById(final Integer id) {
+        final Optional<Order> orderWrapper = orderRepository.findById(id);
         if (orderWrapper.isPresent()) {
             return orderWrapper.get();
         }
@@ -46,12 +46,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void delete(Order order) {
+    public void delete(final Order order) {
         orderRepository.delete(order);
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         orderRepository.deleteById(id);
     }
 }
