@@ -18,50 +18,48 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/order")
 public class OrderController {
 
     @Autowired
-    OrderService orderService;
+    private OrderService orderService;
 
     @PostMapping
-    ResponseEntity<Order> save(@RequestBody Order order) {
-        Order savedOrder = orderService.save(order);
-        if (savedOrder != null) {
-            return new ResponseEntity<>(savedOrder, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<Order> save(@RequestBody final Order order) {
+        final Order savedOrder = orderService.save(order);
+        return Optional.ofNullable(savedOrder).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @PutMapping
-    ResponseEntity<Order> update(@RequestBody Order order) {
-        Order savedOrder = orderService.update(order);
-        if (orderService != null) {
-            return new ResponseEntity<>(savedOrder, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<Order> update(@RequestBody final Order order) {
+        final Order updatedOrder = orderService.update(order);
+        return Optional.ofNullable(updatedOrder).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @ApiParam("test id description")
-    @GetMapping({"/{id}", ""})
-    ResponseEntity findById(@PathVariable(required = false) Integer id) {
-        if (id == null) {
-            return new ResponseEntity<List>(orderService.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<Order>(orderService.findById(id), HttpStatus.OK);
-        }
+    @GetMapping({"/{id}"})
+    ResponseEntity findById(@PathVariable(required = false) final Integer id) {
+        final Order foundOrder = orderService.findById(id);
+        return Optional.ofNullable(foundOrder).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
+    @GetMapping({""})
+    ResponseEntity findAll() {
+        final List<Order> foundOrders = orderService.findAll();
+        return Optional.ofNullable(foundOrders).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<Order> deleteById(@PathVariable Integer id) {
+    ResponseEntity<Order> deleteById(@PathVariable final Integer id) {
         orderService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<Order> delete(@RequestBody Order order) {
+    ResponseEntity<Order> delete(@RequestBody final Order order) {
         orderService.delete(order);
         return new ResponseEntity<>(HttpStatus.OK);
     }
