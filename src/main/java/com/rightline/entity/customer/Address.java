@@ -14,10 +14,10 @@ import javax.persistence.Column;
 @Getter
 @Embeddable
 @NoArgsConstructor
-@AllArgsConstructor
-@Setter
+//@AllArgsConstructor
+//@Setter
 @Entity
-@Table(name = "legosets")
+@Table(name = "address")
 public class Address {
 
     @Id
@@ -39,4 +39,12 @@ public class Address {
         this.street = street;
         this.zipCode = zipCode;
     }
+
+    public Address(Integer id, Point location, String street, String zipCode) {
+        this.id = id;
+        this.location = location;
+        this.street = street;
+        this.zipCode = zipCode;
+    }
+
 }
