@@ -19,16 +19,18 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer save(final Customer customer) {
         if (customer.getId() == null) {
             return customerRepository.save(customer);
+        } else {
+            return customerRepository.save(customer);
         }
-        return customerRepository.save(customer);
     }
 
     @Override
     public Customer update(final Customer customer) {
         if (customer.getId() != null && findById(customer.getId()) != null) {
             return customerRepository.save(customer);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -36,8 +38,9 @@ public class CustomerServiceImpl implements CustomerService {
         final Optional<Customer> customerWrapper = customerRepository.findById(id);
         if (customerWrapper.isPresent()) {
             return customerWrapper.get();
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override

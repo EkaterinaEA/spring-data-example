@@ -5,6 +5,7 @@ import com.rightline.dao.AddressRepository;
 import com.rightline.entity.customer.Address;
 import com.rightline.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,16 +21,19 @@ public class AddressServiceImpl implements AddressService {
     public Address save(final Address address) {
         if (address.getId() == null) {
             return addressRepository.save(address);
+        } else {
+            return addressRepository.save(address);
         }
-        return addressRepository.save(address);
     }
+
 
     @Override
     public Address update(final Address address) {
         if (address.getId() != null && findById(address.getId()) != null) {
             return addressRepository.save(address);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -37,8 +41,9 @@ public class AddressServiceImpl implements AddressService {
         final Optional<Address> addressWrapper = addressRepository.findById(id);
         if (addressWrapper.isPresent()) {
             return addressWrapper.get();
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override

@@ -19,16 +19,18 @@ public class LineItemServiceImpl implements LineItemService {
     public LineItem save(final LineItem lineItem) {
         if (lineItem.getId() == null) {
             return lineItemRepository.save(lineItem);
+        } else {
+            return lineItemRepository.save(lineItem);
         }
-        return lineItemRepository.save(lineItem);
     }
 
     @Override
     public LineItem update(final LineItem lineItem) {
         if (lineItem.getId() != null && findById(lineItem.getId()) != null) {
             return lineItemRepository.save(lineItem);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -36,8 +38,9 @@ public class LineItemServiceImpl implements LineItemService {
         final Optional<LineItem> lineItemWrapper = lineItemRepository.findById(id);
         if (lineItemWrapper.isPresent()) {
             return lineItemWrapper.get();
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override

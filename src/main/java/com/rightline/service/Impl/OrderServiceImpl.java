@@ -19,16 +19,18 @@ public class OrderServiceImpl implements OrderService {
     public Order save(final Order order) {
         if (order.getId() == null) {
             return orderRepository.save(order);
+        } else {
+            return orderRepository.save(order);
         }
-        return orderRepository.save(order);
     }
 
     @Override
     public Order update(final Order order) {
         if (order.getId() != null && findById(order.getId()) != null) {
             return orderRepository.save(order);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -36,8 +38,9 @@ public class OrderServiceImpl implements OrderService {
         final Optional<Order> orderWrapper = orderRepository.findById(id);
         if (orderWrapper.isPresent()) {
             return orderWrapper.get();
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
