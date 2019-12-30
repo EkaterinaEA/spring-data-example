@@ -13,10 +13,10 @@ import java.util.Optional;
 public class ModelServiceImpl implements ModelService {
 
     @Autowired
-    ModelDAO modelDAO;
+    private ModelDAO modelDAO;
 
     @Override
-    public Model save(Model model) {
+    public Model save(final Model model) {
         if (model.getId() == null) {
             return modelDAO.save(model);
         }
@@ -24,7 +24,7 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
-    public Model update(Model model) {
+    public Model update(final Model model) {
         if (model.getId() != null && findById(model.getId()) != null) {
             return modelDAO.save(model);
         }
@@ -32,8 +32,8 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
-    public Model findById(Integer id) {
-        Optional<Model> modelWrapper = modelDAO.findById(id);
+    public Model findById(final Integer id) {
+        final Optional<Model> modelWrapper = modelDAO.findById(id);
         if (modelWrapper.isPresent()) {
             return modelWrapper.get();
         }
@@ -46,18 +46,18 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
-    public void delete(Model model) {
+    public void delete(final Model model) {
         modelDAO.delete(model);
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         modelDAO.deleteById(id);
     }
 
     @Override
-    public List<Model> findAllModelsByLegoSetId(Integer legoSetId) {
-        List<Model> models = modelDAO.findAllModelsByLegoSetId(legoSetId);
+    public List<Model> findAllModelsByLegoSetId(final Integer legoSetId) {
+        final List<Model> models = modelDAO.findAllModelsByLegoSetId(legoSetId);
         if (!models.isEmpty()) {
             return models;
         }
