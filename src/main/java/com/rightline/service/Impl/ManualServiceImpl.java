@@ -19,16 +19,18 @@ public class ManualServiceImpl implements ManualService {
     public Manual save(final Manual manual) {
         if (manual.getId() == null) {
             return manualDAO.save(manual);
+        } else {
+            return manualDAO.save(manual);
         }
-        return manualDAO.save(manual);
     }
 
     @Override
     public Manual update(final Manual manual) {
         if (manual.getId() != null && findById(manual.getId()) != null) {
             return manualDAO.save(manual);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -36,8 +38,9 @@ public class ManualServiceImpl implements ManualService {
         final Optional<Manual> manualWrapper = manualDAO.findById(id);
         if (manualWrapper.isPresent()) {
             return manualWrapper.get();
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -55,8 +58,9 @@ public class ManualServiceImpl implements ManualService {
         final List<Manual> manuals = manualDAO.findAllManualsByLegoSetId(legoSetId);
         if (!manuals.isEmpty()) {
             return manuals;
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override

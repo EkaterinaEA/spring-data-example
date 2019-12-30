@@ -19,16 +19,18 @@ public class ModelServiceImpl implements ModelService {
     public Model save(final Model model) {
         if (model.getId() == null) {
             return modelDAO.save(model);
+        } else {
+            return modelDAO.save(model);
         }
-        return modelDAO.save(model);
     }
 
     @Override
     public Model update(final Model model) {
         if (model.getId() != null && findById(model.getId()) != null) {
             return modelDAO.save(model);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -36,8 +38,9 @@ public class ModelServiceImpl implements ModelService {
         final Optional<Model> modelWrapper = modelDAO.findById(id);
         if (modelWrapper.isPresent()) {
             return modelWrapper.get();
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -60,7 +63,8 @@ public class ModelServiceImpl implements ModelService {
         final List<Model> models = modelDAO.findAllModelsByLegoSetId(legoSetId);
         if (!models.isEmpty()) {
             return models;
+        } else {
+            return null;
         }
-        return null;
     }
 }

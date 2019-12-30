@@ -19,16 +19,18 @@ public class ModelMapEntryServiceImpl implements ModelMapEntryService {
     public ModelMapEntry save(final ModelMapEntry modelMapEntry) {
         if (modelMapEntry.getId() == null) {
             return modelMapEntryDAO.save(modelMapEntry);
+        } else {
+            return modelMapEntryDAO.save(modelMapEntry);
         }
-        return modelMapEntryDAO.save(modelMapEntry);
     }
 
     @Override
     public ModelMapEntry update(final ModelMapEntry modelMapEntry) {
         if (modelMapEntry.getId() != null && findById(modelMapEntry.getId()) != null) {
             return modelMapEntryDAO.save(modelMapEntry);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -36,8 +38,9 @@ public class ModelMapEntryServiceImpl implements ModelMapEntryService {
         final Optional<ModelMapEntry> modelMapEntryWrapper = modelMapEntryDAO.findById(id);
         if (modelMapEntryWrapper.isPresent()) {
             return modelMapEntryWrapper.get();
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override

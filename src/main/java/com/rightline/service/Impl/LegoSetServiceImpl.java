@@ -20,16 +20,18 @@ public class LegoSetServiceImpl  implements LegoSetService {
     public LegoSet save(final LegoSet legoSet) {
         if (legoSet.getId() == null) {
             return legoSetRepository.save(legoSet);
+        } else {
+            return legoSetRepository.save(legoSet);
         }
-        return legoSetRepository.save(legoSet);
     }
 
     @Override
     public LegoSet update(final LegoSet legoSet) {
         if (legoSet.getId() != null && findById(legoSet.getId()) != null) {
             return legoSetRepository.save(legoSet);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
@@ -37,8 +39,9 @@ public class LegoSetServiceImpl  implements LegoSetService {
         final Optional<LegoSet> legoSetWrapper = legoSetRepository.findById(id);
         if (legoSetWrapper.isPresent()) {
             return legoSetWrapper.get();
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
