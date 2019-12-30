@@ -23,7 +23,7 @@ import java.util.Optional;
 public class AddressController {
 
     @Autowired
-    AddressService addressService;
+    private AddressService addressService;
 
     @PostMapping
     ResponseEntity<Address> save(@RequestBody final Address address) {
@@ -42,7 +42,6 @@ public class AddressController {
     ResponseEntity findById(@PathVariable(required = false) final Integer id) {
         final Address foundAddress = addressService.findById(id);
         return Optional.ofNullable(foundAddress).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
-
     }
 
     @GetMapping({""})
