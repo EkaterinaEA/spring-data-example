@@ -51,13 +51,13 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<Customer> deleteById(@PathVariable Integer id) {
+    ResponseEntity<Customer> deleteById(@PathVariable final Integer id) {
         customerService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<Customer> delete(@RequestBody Customer customer) {
+    ResponseEntity<Customer> delete(@RequestBody final Customer customer) {
         customerService.delete(customer);
         return new ResponseEntity<>(HttpStatus.OK);
     }

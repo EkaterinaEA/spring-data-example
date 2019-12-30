@@ -52,13 +52,13 @@ public class LineItemController {
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<LineItem> deleteById(@PathVariable Integer id) {
+    ResponseEntity<LineItem> deleteById(@PathVariable final Integer id) {
         lineItemService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<LineItem> delete(@RequestBody LineItem lineItem) {
+    ResponseEntity<LineItem> delete(@RequestBody final LineItem lineItem) {
         lineItemService.delete(lineItem);
         return new ResponseEntity<>(HttpStatus.OK);
     }
