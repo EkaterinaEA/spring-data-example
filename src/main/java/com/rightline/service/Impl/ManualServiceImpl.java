@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ManualServiceImpl  implements ManualService {
+public class ManualServiceImpl implements ManualService {
 
     @Autowired
-    ManualDAO manualDAO;
+    private ManualDAO manualDAO;
 
     @Override
-    public Manual save(Manual manual) {
+    public Manual save(final Manual manual) {
         if (manual.getId() == null) {
             return manualDAO.save(manual);
         }
@@ -24,7 +24,7 @@ public class ManualServiceImpl  implements ManualService {
     }
 
     @Override
-    public Manual update(Manual manual) {
+    public Manual update(final Manual manual) {
         if (manual.getId() != null && findById(manual.getId()) != null) {
             return manualDAO.save(manual);
         }
@@ -32,8 +32,8 @@ public class ManualServiceImpl  implements ManualService {
     }
 
     @Override
-    public Manual findById(Integer id) {
-        Optional<Manual> manualWrapper = manualDAO.findById(id);
+    public Manual findById(final Integer id) {
+        final Optional<Manual> manualWrapper = manualDAO.findById(id);
         if (manualWrapper.isPresent()) {
             return manualWrapper.get();
         }
@@ -46,13 +46,13 @@ public class ManualServiceImpl  implements ManualService {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         manualDAO.deleteById(id);
     }
 
     @Override
-    public List<Manual> findAllManualsByLegoSetId(Integer legoSetId) {
-        List<Manual> manuals = manualDAO.findAllManualsByLegoSetId(legoSetId);
+    public List<Manual> findAllManualsByLegoSetId(final Integer legoSetId) {
+        final List<Manual> manuals = manualDAO.findAllManualsByLegoSetId(legoSetId);
         if (!manuals.isEmpty()) {
             return manuals;
         }
@@ -60,7 +60,7 @@ public class ManualServiceImpl  implements ManualService {
     }
 
     @Override
-    public void delete(Manual manual) {
+    public void delete(final Manual manual) {
         manualDAO.delete(manual);
     }
 }
