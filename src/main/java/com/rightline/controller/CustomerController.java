@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer")
@@ -25,31 +26,28 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping
-    ResponseEntity<Customer> save(@RequestBody Customer customer) {
-        Customer savedCustomer = customerService.save(customer);
-        if (savedCustomer != null) {
-            return new ResponseEntity<>(savedCustomer, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<Customer> save(@RequestBody final Customer customer) {
+        final Customer savedCustomer = customerService.save(customer);
+        return Optional.ofNullable(savedCustomer).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @PutMapping
-    ResponseEntity<Customer> update(@RequestBody Customer customer) {
-        Customer savedCustomer = customerService.update(customer);
-        if (savedCustomer != null) {
-            return new ResponseEntity<>(savedCustomer, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<Customer> update(@RequestBody final Customer customer) {
+        final Customer updatedCustomer = customerService.update(customer);
+        return Optional.ofNullable(updatedCustomer).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @ApiParam("test id description")
-    @GetMapping({"/{id}", ""})
-    ResponseEntity findById(@PathVariable (required = false) Integer id) {
-        if (id == null) {
-            return new ResponseEntity<List>(customerService.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<Customer>(customerService.findById(id), HttpStatus.OK);
-        }
+    @GetMapping({"/{id}"})
+    ResponseEntity findById(@PathVariable (required = false) final Integer id) {
+        final Customer foundCustomer = customerService.findById(id);
+        return Optional.ofNullable(foundCustomer).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
+    @GetMapping({""})
+    ResponseEntity findAll() {
+        final List<Customer> foundCustomers = customerService.findAll();
+        return Optional.ofNullable(foundCustomers).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @DeleteMapping("/{id}")
