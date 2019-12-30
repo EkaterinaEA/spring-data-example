@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/manual")
@@ -25,48 +26,46 @@ public class ManualController {
     private ManualService manualService;
 
     @PostMapping
-    ResponseEntity<Manual> save(@RequestBody Manual manual) {
-        Manual savedManual = manualService.save(manual);
-        if (savedManual != null) {
-            return new ResponseEntity<>(savedManual, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<Manual> save(@RequestBody final Manual manual) {
+        final Manual savedManual = manualService.save(manual);
+        return Optional.ofNullable(savedManual).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @PutMapping
-    ResponseEntity<Manual> update(@RequestBody Manual manual) {
-        Manual savedManual = manualService.update(manual);
-        if (savedManual != null) {
-            return new ResponseEntity<>(savedManual, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<Manual> update(@RequestBody final Manual manual) {
+        Manual updatedManual = manualService.update(manual);
+        return Optional.ofNullable(updatedManual).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @ApiParam("test id description")
-    @GetMapping({"/{id}", ""})
-    ResponseEntity findById(@PathVariable (required = false) Integer id) {
-        if (id == null) {
-            return new ResponseEntity<List>(manualService.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<Manual>(manualService.findById(id), HttpStatus.OK);
-        }
+    @GetMapping({"/{id}"})
+    ResponseEntity findById(@PathVariable(required = false) final Integer id) {
+        final Manual foundManual = manualService.findById(id);
+        return Optional.ofNullable(foundManual).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
+    @GetMapping({""})
+    ResponseEntity findAll() {
+        final List<Manual> foundManuals = manualService.findAll();
+        return Optional.ofNullable(foundManuals).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<Manual> deleteById(@PathVariable Integer id) {
+    ResponseEntity<Manual> deleteById(@PathVariable final Integer id) {
         manualService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<Manual> delete(@RequestBody Manual manual) {
+    ResponseEntity<Manual> delete(@RequestBody final Manual manual) {
         manualService.delete(manual);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/find-all-manuals-by-legosetid/{cartId}")
-    public ResponseEntity<Manual> findAllManualsByLegoSetId(@PathVariable Integer legoSetId) {
-        return new ResponseEntity(manualService.findAllManualsByLegoSetId(legoSetId), HttpStatus.OK);
+    public ResponseEntity<List<Manual>> findAllManualsByLegoSetId(@PathVariable final Integer legoSetId) {
+        final List<Manual> foundManuals = manualService.findAllManualsByLegoSetId(legoSetId);
+        return Optional.ofNullable(foundManuals).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
 }
