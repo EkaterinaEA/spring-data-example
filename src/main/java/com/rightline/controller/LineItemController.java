@@ -17,40 +17,38 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/lineitem")
 public class LineItemController {
 
     @Autowired
-    LineItemService lineItemService;
+    private LineItemService lineItemService;
 
     @PostMapping
-    ResponseEntity<LineItem> save(@RequestBody LineItem lineItem) {
-        LineItem savedLineItem = lineItemService.save(lineItem);
-        if (savedLineItem != null) {
-            return new ResponseEntity<>(savedLineItem, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<LineItem> save(@RequestBody final LineItem lineItem) {
+        final LineItem savedLineItem = lineItemService.save(lineItem);
+        return Optional.ofNullable(savedLineItem).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @PutMapping
-    ResponseEntity<LineItem> update(@RequestBody LineItem lineItem) {
-        LineItem savedLineItem = lineItemService.update(lineItem);
-        if (savedLineItem != null) {
-            return new ResponseEntity<>(savedLineItem, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<LineItem> update(@RequestBody final LineItem lineItem) {
+        final LineItem updatedLineItem = lineItemService.update(lineItem);
+        return Optional.ofNullable(updatedLineItem).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @ApiParam("test id description")
-    @GetMapping({"/{id}", ""})
-    ResponseEntity findById(@PathVariable(required = false) Integer id) {
-        if (id == null) {
-            return new ResponseEntity<List>(lineItemService.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<LineItem>(lineItemService.findById(id), HttpStatus.OK);
-        }
+    @GetMapping({"/{id}"})
+    ResponseEntity findById(@PathVariable(required = false) final Integer id) {
+        final LineItem foundLineItem = lineItemService.findById(id);
+        return Optional.ofNullable(foundLineItem).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
+    @GetMapping({""})
+    ResponseEntity findAll() {
+        final List<LineItem> foundLinesItem = lineItemService.findAll();
+        return Optional.ofNullable(foundLinesItem).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @DeleteMapping("/{id}")
