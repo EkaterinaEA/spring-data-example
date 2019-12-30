@@ -16,53 +16,50 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/legoset")
 public class LegoSetController {
 
     @Autowired
-    LegoSetService legoSetService;
+    private LegoSetService legoSetService;
 
     @PostMapping
-    ResponseEntity<LegoSet> save(@RequestBody LegoSet legoSet) {
-        LegoSet savedLegoSet = legoSetService.save(legoSet);
-        if (savedLegoSet != null) {
-            return new ResponseEntity<>(savedLegoSet, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<LegoSet> save(@RequestBody final LegoSet legoSet) {
+        final LegoSet savedLegoSet = legoSetService.save(legoSet);
+        return Optional.ofNullable(savedLegoSet).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @PutMapping
-    ResponseEntity<LegoSet> update(@RequestBody LegoSet legoSet) {
-        LegoSet savedLegoSet = legoSetService.update(legoSet);
-        if (savedLegoSet != null) {
-            return new ResponseEntity<>(savedLegoSet, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<LegoSet> update(@RequestBody final LegoSet legoSet) {
+        final LegoSet updatedLegoSet = legoSetService.update(legoSet);
+        return Optional.ofNullable(updatedLegoSet).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @ApiParam("test id description")
-    @GetMapping({"/{id}", ""})
-    ResponseEntity findById(@PathVariable (required = false) Integer id) {
-        if (id == null) {
-            return new ResponseEntity<List>(legoSetService.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<LegoSet>(legoSetService.findById(id), HttpStatus.OK);
-        }
+    @GetMapping({"/{id}"})
+    ResponseEntity findById(@PathVariable(required = false) final Integer id) {
+        final LegoSet foundLegoSet = legoSetService.findById(id);
+        return Optional.ofNullable(foundLegoSet).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
+    @GetMapping({""})
+    ResponseEntity findAll() {
+        final List<LegoSet> foundLegoSets = legoSetService.findAll();
+        return Optional.ofNullable(foundLegoSets).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<LegoSet> deleteById(@PathVariable Integer id) {
+    ResponseEntity<LegoSet> deleteById(@PathVariable final Integer id) {
         legoSetService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<LegoSet> delete(@RequestBody LegoSet legoSet) {
+    ResponseEntity<LegoSet> delete(@RequestBody final LegoSet legoSet) {
         legoSetService.delete(legoSet);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
 }
