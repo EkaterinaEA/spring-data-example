@@ -17,50 +17,48 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/modelmapentry")
 public class ModelMapEntryController {
 
     @Autowired
-    ModelMapEntryService modelMapEntryService;
+    private ModelMapEntryService modelMapEntryService;
 
     @PostMapping
-    ResponseEntity<ModelMapEntry> save(@RequestBody ModelMapEntry modelMapEntry) {
-        ModelMapEntry savedModelMapEntry = modelMapEntryService.save(modelMapEntry);
-        if (savedModelMapEntry != null) {
-            return new ResponseEntity<>(savedModelMapEntry, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<ModelMapEntry> save(@RequestBody final ModelMapEntry modelMapEntry) {
+        final ModelMapEntry savedModelMapEntry = modelMapEntryService.save(modelMapEntry);
+        return Optional.ofNullable(savedModelMapEntry).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @PutMapping
-    ResponseEntity<ModelMapEntry> update(@RequestBody ModelMapEntry modelMapEntry) {
-        ModelMapEntry savedModelMapEntry = modelMapEntryService.update(modelMapEntry);
-        if (modelMapEntryService != null) {
-            return new ResponseEntity<>(savedModelMapEntry, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<ModelMapEntry> update(@RequestBody final ModelMapEntry modelMapEntry) {
+        final ModelMapEntry updatedModelMapEntry = modelMapEntryService.update(modelMapEntry);
+        return Optional.ofNullable(updatedModelMapEntry).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @ApiParam("test id description")
-    @GetMapping({"/{id}", ""})
-    ResponseEntity findById(@PathVariable(required = false) Integer id) {
-        if (id == null) {
-            return new ResponseEntity<List>(modelMapEntryService.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<ModelMapEntry>(modelMapEntryService.findById(id), HttpStatus.OK);
-        }
+    @GetMapping({"/{id}"})
+    ResponseEntity findById(@PathVariable(required = false) final Integer id) {
+        final ModelMapEntry foundModelMapEntry = modelMapEntryService.findById(id);
+        return Optional.ofNullable(foundModelMapEntry).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
+    @GetMapping({""})
+    ResponseEntity findAll() {
+        final List<ModelMapEntry> foundModelMapsEntry = modelMapEntryService.findAll();
+        return Optional.ofNullable(foundModelMapsEntry).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<ModelMapEntry> deleteById(@PathVariable Integer id) {
+    ResponseEntity<ModelMapEntry> deleteById(@PathVariable final Integer id) {
         modelMapEntryService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<ModelMapEntry> delete(@RequestBody ModelMapEntry modelMapEntry) {
+    ResponseEntity<ModelMapEntry> delete(@RequestBody final ModelMapEntry modelMapEntry) {
         modelMapEntryService.delete(modelMapEntry);
         return new ResponseEntity<>(HttpStatus.OK);
     }
