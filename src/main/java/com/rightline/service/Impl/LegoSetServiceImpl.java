@@ -14,10 +14,10 @@ import java.util.Optional;
 public class LegoSetServiceImpl  implements LegoSetService {
 
     @Autowired
-    LegoSetRepository legoSetRepository;
+    private LegoSetRepository legoSetRepository;
 
     @Override
-    public LegoSet save(LegoSet legoSet) {
+    public LegoSet save(final LegoSet legoSet) {
         if (legoSet.getId() == null) {
             return legoSetRepository.save(legoSet);
         }
@@ -25,7 +25,7 @@ public class LegoSetServiceImpl  implements LegoSetService {
     }
 
     @Override
-    public LegoSet update(LegoSet legoSet) {
+    public LegoSet update(final LegoSet legoSet) {
         if (legoSet.getId() != null && findById(legoSet.getId()) != null) {
             return legoSetRepository.save(legoSet);
         }
@@ -33,8 +33,8 @@ public class LegoSetServiceImpl  implements LegoSetService {
     }
 
     @Override
-    public LegoSet findById(Integer id) {
-        Optional<LegoSet> legoSetWrapper = legoSetRepository.findById(id);
+    public LegoSet findById(final Integer id) {
+        final Optional<LegoSet> legoSetWrapper = legoSetRepository.findById(id);
         if (legoSetWrapper.isPresent()) {
             return legoSetWrapper.get();
         }
@@ -47,12 +47,12 @@ public class LegoSetServiceImpl  implements LegoSetService {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         legoSetRepository.deleteById(id);
     }
 
     @Override
-    public void delete(LegoSet legoSet) {
+    public void delete(final LegoSet legoSet) {
         legoSetRepository.delete(legoSet);
     }
 }
