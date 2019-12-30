@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/address")
@@ -25,41 +26,39 @@ public class AddressController {
     AddressService addressService;
 
     @PostMapping
-    ResponseEntity<Address> save(@RequestBody Address address) {
-        Address savedAddress = addressService.save(address);
-        if (savedAddress != null) {
-            return new ResponseEntity<>(savedAddress, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<Address> save(@RequestBody final Address address) {
+        final Address savedAddress = addressService.save(address);
+        return Optional.ofNullable(savedAddress).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @PutMapping
-    ResponseEntity<Address> update(@RequestBody Address address) {
-        Address savedAddress = addressService.update(address);
-        if (savedAddress != null) {
-            return new ResponseEntity<>(savedAddress, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    ResponseEntity<Address> update(@RequestBody final Address address) {
+        final Address updatedAddress = addressService.update(address);
+        return Optional.ofNullable(updatedAddress).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @ApiParam("test id description")
-    @GetMapping({"/{id}", ""})
-    ResponseEntity findById(@PathVariable (required = false) Integer id) {
-        if (id == null) {
-            return new ResponseEntity<List>(addressService.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<Address>(addressService.findById(id), HttpStatus.OK);
-        }
+    @GetMapping({"/{id}"})
+    ResponseEntity findById(@PathVariable(required = false) final Integer id) {
+        final Address foundAddress = addressService.findById(id);
+        return Optional.ofNullable(foundAddress).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+
+    }
+
+    @GetMapping({""})
+    ResponseEntity findAll() {
+        final List<Address> foundAddresses = addressService.findAll();
+        return Optional.ofNullable(foundAddresses).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @DeleteMapping("/{id}")
-    ResponseEntity<Address> deleteById(@PathVariable Integer id) {
+    ResponseEntity<Address> deleteById(@PathVariable final Integer id) {
         addressService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping()
-    ResponseEntity<Address> delete(@RequestBody Address address) {
+    ResponseEntity<Address> delete(@RequestBody final Address address) {
         addressService.delete(address);
         return new ResponseEntity<>(HttpStatus.OK);
     }
