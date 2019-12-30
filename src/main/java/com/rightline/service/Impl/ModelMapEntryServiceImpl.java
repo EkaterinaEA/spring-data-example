@@ -13,10 +13,10 @@ import java.util.Optional;
 public class ModelMapEntryServiceImpl implements ModelMapEntryService {
 
     @Autowired
-    ModelMapEntryDAO modelMapEntryDAO;
+    private ModelMapEntryDAO modelMapEntryDAO;
 
     @Override
-    public ModelMapEntry save(ModelMapEntry modelMapEntry) {
+    public ModelMapEntry save(final ModelMapEntry modelMapEntry) {
         if (modelMapEntry.getId() == null) {
             return modelMapEntryDAO.save(modelMapEntry);
         }
@@ -24,7 +24,7 @@ public class ModelMapEntryServiceImpl implements ModelMapEntryService {
     }
 
     @Override
-    public ModelMapEntry update(ModelMapEntry modelMapEntry) {
+    public ModelMapEntry update(final ModelMapEntry modelMapEntry) {
         if (modelMapEntry.getId() != null && findById(modelMapEntry.getId()) != null) {
             return modelMapEntryDAO.save(modelMapEntry);
         }
@@ -32,8 +32,8 @@ public class ModelMapEntryServiceImpl implements ModelMapEntryService {
     }
 
     @Override
-    public ModelMapEntry findById(Integer id) {
-        Optional<ModelMapEntry> modelMapEntryWrapper = modelMapEntryDAO.findById(id);
+    public ModelMapEntry findById(final Integer id) {
+        final Optional<ModelMapEntry> modelMapEntryWrapper = modelMapEntryDAO.findById(id);
         if (modelMapEntryWrapper.isPresent()) {
             return modelMapEntryWrapper.get();
         }
@@ -46,12 +46,12 @@ public class ModelMapEntryServiceImpl implements ModelMapEntryService {
     }
 
     @Override
-    public void delete(ModelMapEntry modelMapEntry) {
+    public void delete(final ModelMapEntry modelMapEntry) {
         modelMapEntryDAO.delete(modelMapEntry);
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(final Integer id) {
         modelMapEntryDAO.deleteById(id);
     }
 }
