@@ -1,4 +1,4 @@
-/*package com.rightline.springquartz.basics.config;
+/*package com.rightline.springquartz.config;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.BeansException;

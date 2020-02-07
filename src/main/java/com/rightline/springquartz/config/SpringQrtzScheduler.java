@@ -1,4 +1,4 @@
-/*package com.rightline.springquartz.basics.config;
+/*package com.rightline.springquartz.config;
 
 import com.rightline.entity.JobSchedule;
 import org.quartz.JobDetail;
