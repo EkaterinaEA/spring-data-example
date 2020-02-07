@@ -1,7 +1,6 @@
 package com.rightline.service;
 
 import com.rightline.entity.Schedule;
-import org.quartz.SchedulerException;
 
 import java.text.ParseException;
 import java.util.List;
@@ -14,7 +13,9 @@ public interface ScheduleService {
 
     Schedule findById(Integer id);
 
-    Schedule getCurrentSchedule();
+    Schedule getSchedule();
 
-    void serverTasks() throws SchedulerException, ParseException;
+    List<Schedule> findAll();
+
+ //   void startMerchantAction() throws SchedulerException, ParseException;
 }

@@ -2,13 +2,13 @@ package com.rightline.controller;
 
 import com.rightline.entity.Schedule;
 import com.rightline.service.ScheduleService;
-import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -31,9 +31,21 @@ public class ScheduleController {
     }
 
     @GetMapping
-    ResponseEntity<Schedule> serverTasks() throws ParseException, SchedulerException {
-        scheduleService.serverTasks();
+    ResponseEntity<Schedule> startMerchantAction() throws ParseException {
+   //     scheduleService.startMerchantAction();
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping({"/{findAll}"})
+    ResponseEntity findAll() {
+        final List<Schedule> foundSchedule = scheduleService.findAll();
+        return Optional.ofNullable(foundSchedule).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
+    @GetMapping({"/{schedule}"})
+    ResponseEntity getSchedule() {
+        final Schedule foundSchedule = scheduleService.getSchedule();
+        return Optional.ofNullable(foundSchedule).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
 }

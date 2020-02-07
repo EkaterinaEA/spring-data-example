@@ -1,13 +1,9 @@
 package com.rightline.service.Impl;
 
 import com.rightline.dao.ScheduleRepository;
-import com.rightline.entity.JobMerchant;
 import com.rightline.entity.Schedule;
 import com.rightline.service.ScheduleService;
-import org.quartz.*;
-import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -20,8 +16,6 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Autowired
     private ScheduleRepository scheduleRepository;
 
-    private static Schedule schedule;
-
     @Override
     public Schedule save(final Schedule schedule) {
         if (schedule.getId() == null) {
@@ -32,7 +26,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public Schedule getCurrentSchedule() {
+    public Schedule getSchedule() {
         final List<Schedule> findAll = scheduleRepository.findAll();
         if (!findAll.isEmpty()) {
             return findAll.get(0);
@@ -60,20 +54,32 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
     }
 
-    @Scheduled(fixedRate = 120000)
-    private void getCurrentSchedulePeriodicDataCapture() {
-        schedule = getCurrentSchedule();
-        System.out.println("Schedule was updated");
+    @Override
+    public List<Schedule> findAll() {
+        return scheduleRepository.findAll();
     }
 
-    public void serverTasks() throws SchedulerException, ParseException {
+    /*
+    public void getCurrentSchedule() throws SchedulerException, ParseException {
         SchedulerFactory factory = new StdSchedulerFactory();
-        Scheduler scheduler = factory.getScheduler();
-        JobDetail job = JobBuilder.newJob(JobMerchant.class).withIdentity("job1", "group1").build();
+        Scheduler config = factory.getScheduler();
+        JobDetail job = JobBuilder.newJob(JobSchedule.class).withIdentity("job1", "group1").build();
         CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group1")
-                .withSchedule(CronScheduleBuilder.cronSchedule(schedule.getCron())).build();
-        scheduler.scheduleJob(job, trigger);
-        scheduler.start();
+                .withSchedule(CronScheduleBuilder.cronSchedule("0 0/1 * * * ?")).build();
+        config.scheduleJob(job, trigger);
+        config.start();
     }
+
+    public void startMerchantAction() throws SchedulerException, ParseException {
+        SchedulerFactory factory = new StdSchedulerFactory();
+        Scheduler config = factory.getScheduler();
+        JobDetail job = JobBuilder.newJob(JobMerchant.class).withIdentity("job2", "group2").build();
+        CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger2", "group2")
+                .withSchedule(CronScheduleBuilder.cronSchedule(JobSchedule.getSchedule().getCron())).build();
+        config.scheduleJob(job, trigger);
+        config.start();
+    }
+
+     */
 
 }
