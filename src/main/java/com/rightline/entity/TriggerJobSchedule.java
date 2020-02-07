@@ -1,4 +1,4 @@
-package com.rightline.entity;
+/*package com.rightline.entity;
 
 import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
@@ -28,3 +28,5 @@ public class TriggerJobSchedule {
     }
 
 }
+
+ */

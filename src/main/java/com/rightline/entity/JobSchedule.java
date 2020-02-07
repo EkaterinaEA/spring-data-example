@@ -1,4 +1,4 @@
-package com.rightline.entity;
+/*package com.rightline.entity;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -22,3 +22,5 @@ public class JobSchedule implements Job {
     }
 
 }
+
+ */

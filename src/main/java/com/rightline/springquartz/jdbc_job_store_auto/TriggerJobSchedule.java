@@ -1,7 +1,13 @@
 package com.rightline.springquartz.jdbc_job_store_auto;
 
-import com.rightline.entity.JobSchedule;
-import org.quartz.*;
+import org.quartz.SchedulerException;
+import org.quartz.SchedulerFactory;
+import org.quartz.Scheduler;
+import org.quartz.JobDetail;
+import org.quartz.JobBuilder;
+import org.quartz.CronTrigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.CronScheduleBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
 public class TriggerJobSchedule {

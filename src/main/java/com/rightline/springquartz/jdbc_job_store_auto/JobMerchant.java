@@ -1,6 +1,5 @@
 package com.rightline.springquartz.jdbc_job_store_auto;
 
-import com.rightline.entity.JobSchedule;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;

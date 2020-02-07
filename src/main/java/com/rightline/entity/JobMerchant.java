@@ -1,4 +1,4 @@
-package com.rightline.entity;
+/*package com.rightline.entity;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,4 +26,6 @@ public class JobMerchant implements Job {
     }
 }
 
+
+ */
 

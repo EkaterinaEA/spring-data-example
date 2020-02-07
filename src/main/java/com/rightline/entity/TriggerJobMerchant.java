@@ -1,4 +1,4 @@
-package com.rightline.entity;
+/*package com.rightline.entity;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -23,7 +23,7 @@ public class TriggerJobMerchant {
                 .withSchedule(CronScheduleBuilder.cronSchedule(cron)).build();
         scheduler.scheduleJob(jobDetail, trigger);
 
-        /*
+
         // обход по всем группам
         for (String groupName : config.getJobGroupNames()) {
             // обход по всем job группы
@@ -52,7 +52,9 @@ public class TriggerJobMerchant {
             }
         }
 
-         */
+
         scheduler.start();
     }
 }
+
+*/
