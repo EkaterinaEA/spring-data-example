@@ -1,4 +1,4 @@
-/*package com.rightline.springquartz.jdbc_job_store_datasource;
+package com.rightline.springquartz.jdbc_job_store_datasource;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
@@ -23,4 +23,4 @@ public final class AutowiringSpringBeanJobFactory extends SpringBeanJobFactory i
     }
 }
 
-*/
+

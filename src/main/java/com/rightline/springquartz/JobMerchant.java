@@ -1,4 +1,4 @@
-package com.rightline.springquartz.jdbc_job_store_auto;
+package com.rightline.springquartz;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

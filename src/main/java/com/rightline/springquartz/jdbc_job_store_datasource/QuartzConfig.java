@@ -1,4 +1,4 @@
-/*package com.rightline.springquartz.jdbc_job_store_datasource;
+package com.rightline.springquartz.jdbc_job_store_datasource;
 
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.CronTrigger;
@@ -35,6 +35,8 @@ public class QuartzConfig {
     @Bean
     public SchedulerFactoryBean scheduler(Trigger... triggers) {
 
+        SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
+
         Properties properties = new Properties();
 
         properties.put("org.quartz.jobStore.class", "org.quartz.impl.jdbcjobstore.JobStoreTX");
@@ -56,9 +58,6 @@ public class QuartzConfig {
        schedulerFactory.setJobFactory(springBeanJobFactory());
        schedulerFactory.setWaitForJobsToCompleteOnShutdown(true);
        schedulerFactory.setTriggers(triggers);
-
-
-        SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
 
         return schedulerFactory;
     }
@@ -107,4 +106,3 @@ public class QuartzConfig {
         return factoryBean;
     }
 }
-*/
