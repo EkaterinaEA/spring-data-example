@@ -1,6 +1,6 @@
-/*package com.rightline.springquartz.config;
+package com.rightline.springquartz.config;
 
-import com.rightline.entity.JobSchedule;
+import com.rightline.springquartz.jdbc_job_store_auto.JobSchedule;
 import org.quartz.JobDetail;
 import org.quartz.Trigger;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -92,4 +92,4 @@ public class SpringQrtzScheduler {
     }
 }
 
- */
+

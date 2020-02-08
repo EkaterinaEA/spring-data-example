@@ -1,4 +1,4 @@
-package com.rightline.springquartz.jdbc_job_store_datasource;
+/*package com.rightline.springquartz.jdbc_job_store_datasource;
 
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.CronTrigger;
@@ -46,7 +46,7 @@ public class QuartzConfig {
         properties.put("org.quartz.dataSource.quartzDataSource.password", "89520290819");
         properties.put("org.quartz.threadPool.threadCount", "5");
 
-     /*  properties.setProperty("org.quartz.scheduler.instanceName", "MyInstanceName");
+       properties.setProperty("org.quartz.scheduler.instanceName", "MyInstanceName");
        properties.setProperty("org.quartz.config.instanceId", "Instance1");
 
        schedulerFactory.setOverwriteExistingJobs(true);
@@ -57,7 +57,7 @@ public class QuartzConfig {
        schedulerFactory.setWaitForJobsToCompleteOnShutdown(true);
        schedulerFactory.setTriggers(triggers);
 
-      */
+
         SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
 
         return schedulerFactory;
@@ -107,3 +107,4 @@ public class QuartzConfig {
         return factoryBean;
     }
 }
+*/

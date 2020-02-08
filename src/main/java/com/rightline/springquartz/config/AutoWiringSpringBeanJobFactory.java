@@ -1,4 +1,4 @@
-/*package com.rightline.springquartz.config;
+package com.rightline.springquartz.config;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.BeansException;
@@ -7,9 +7,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
-/**
- * Adds auto-wiring support to quartz jobs.
- * @see "https://gist.github.com/jelies/5085593"
 
 public final class AutoWiringSpringBeanJobFactory extends SpringBeanJobFactory implements ApplicationContextAware {
 
@@ -29,4 +26,3 @@ public final class AutoWiringSpringBeanJobFactory extends SpringBeanJobFactory i
     }
 
 }
-*/

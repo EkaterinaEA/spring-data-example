@@ -1,4 +1,4 @@
-package com.rightline.springquartz.jdbc_job_store_datasource;
+/*package com.rightline.springquartz.jdbc_job_store_datasource;
 
 import com.rightline.springquartz.jdbc_job_store_auto.JobMerchant;
 import com.rightline.springquartz.jdbc_job_store_auto.JobSchedule;
@@ -34,3 +34,4 @@ public class QuartzSubmitJobs {
         return QuartzConfig.createCronTrigger(jobDetail, CRON_EVERY_MINUTES, "Job Schedule Trigger");
     }
 }
+*/
