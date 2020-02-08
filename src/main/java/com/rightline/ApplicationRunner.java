@@ -14,10 +14,10 @@ public class ApplicationRunner {
     public static void main(String[] args) throws SchedulerException {
 
         SpringApplication.run(ApplicationRunner.class, args);
-        TriggerJobMerchant triggerJobMerchant = new TriggerJobMerchant();
-        TriggerJobSchedule triggerJobSchedule = new TriggerJobSchedule();
-        triggerJobMerchant.startMerchantAction();
-        triggerJobSchedule.startCronScheduler();
+     //   TriggerJobMerchant triggerJobMerchant = new TriggerJobMerchant();
+     //   TriggerJobSchedule triggerJobSchedule = new TriggerJobSchedule();
+     //   triggerJobMerchant.startMerchantAction();
+     //   triggerJobSchedule.startCronScheduler();
 
     }
 }
