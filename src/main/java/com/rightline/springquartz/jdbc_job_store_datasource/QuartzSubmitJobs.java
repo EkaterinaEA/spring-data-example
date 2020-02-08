@@ -1,7 +1,7 @@
 /*package com.rightline.springquartz.jdbc_job_store_datasource;
 
-import com.rightline.springquartz.jdbc_job_store_auto.JobMerchant;
-import com.rightline.springquartz.jdbc_job_store_auto.JobSchedule;
+import com.rightline.springquartz.jobs.JobMerchant;
+import com.rightline.springquartz.jobs.JobSchedule;
 import org.quartz.JobDetail;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

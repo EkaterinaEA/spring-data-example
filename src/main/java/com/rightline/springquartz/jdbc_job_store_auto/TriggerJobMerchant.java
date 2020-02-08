@@ -1,6 +1,8 @@
 package com.rightline.springquartz.jdbc_job_store_auto;
 
 
+import com.rightline.springquartz.jobs.JobMerchant;
+import com.rightline.springquartz.jobs.JobSchedule;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 

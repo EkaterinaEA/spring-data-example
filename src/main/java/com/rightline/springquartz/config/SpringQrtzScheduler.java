@@ -1,6 +1,6 @@
 package com.rightline.springquartz.config;
 
-import com.rightline.springquartz.jdbc_job_store_auto.JobSchedule;
+import com.rightline.springquartz.jobs.JobSchedule;
 import org.quartz.JobDetail;
 import org.quartz.Trigger;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

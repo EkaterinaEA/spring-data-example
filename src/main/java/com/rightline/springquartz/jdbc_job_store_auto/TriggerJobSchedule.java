@@ -1,5 +1,6 @@
 package com.rightline.springquartz.jdbc_job_store_auto;
 
+import com.rightline.springquartz.jobs.JobSchedule;
 import org.quartz.SchedulerException;
 import org.quartz.SchedulerFactory;
 import org.quartz.Scheduler;

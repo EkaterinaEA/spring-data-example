@@ -1,4 +1,4 @@
-package com.rightline.springquartz.jdbc_job_store_auto;
+package com.rightline.springquartz.jobs;
 
 import com.rightline.entity.Schedule;
 import org.quartz.Job;
