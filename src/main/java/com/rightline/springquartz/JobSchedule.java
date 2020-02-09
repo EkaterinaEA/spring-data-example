@@ -1,5 +1,6 @@
-package com.rightline.entity;
+package com.rightline.springquartz;
 
+import com.rightline.entity.Schedule;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

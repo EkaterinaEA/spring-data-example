@@ -1,11 +1,9 @@
-package com.rightline.entity;
+package com.rightline.springquartz;
 
+import com.rightline.springquartz.JobMerchant;
+import com.rightline.springquartz.JobSchedule;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-import org.quartz.impl.matchers.GroupMatcher;
-
-import java.util.Date;
-import java.util.List;
 
 public class TriggerJobMerchant {
 
