@@ -42,7 +42,6 @@ public class ChangerScheduleJob implements Job {
                 //save timeExecutorJob to context
                 currentScheduler.getContext().put("timeExecutorJob", timeExecutorJob);
             }
-
         } catch (SchedulerException e) {
             e.printStackTrace();
         }
