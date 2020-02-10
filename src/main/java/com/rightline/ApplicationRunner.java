@@ -1,7 +1,5 @@
 package com.rightline;
 
-import com.rightline.springquartz.jdbc_job_store_auto.TriggerJobMerchant;
-import com.rightline.springquartz.jdbc_job_store_auto.TriggerJobSchedule;
 import org.quartz.SchedulerException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
